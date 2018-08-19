@@ -24,4 +24,8 @@ class Deputado extends Model
         return $this->hasMany('App\Gasto', 'id_deputado');
     }
 
+    public function votacoes() {
+        return $this->hasMany('App\Votacao', 'id_deputado');
+    }
+
 }

@@ -8,19 +8,18 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Deputado;
 
 class DeputadasController extends Controller
 {
 
     public function listarDeputadas() {
-        $deputadas = Deputado::with('detalhe')->get();
+        $deputadas = Deputado::with(['detalhe', 'votacoes'])->get();
         return $deputadas;
     }
 
     public function getDeputada($id) {
-        $deputada = Deputado::find($id);
+        $deputada = Deputado::where('id', $id)->with(['detalhe', 'votacoes'])->get();
         return $deputada;
     }
 
